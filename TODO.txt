@@ -1,0 +1,3 @@
+Add Edge support for locally installed browser. Now available from Microsoft
+
+/Applications/Microsoft\ Edge\ Dev.app/Contents/MacOS/Microsoft\ Edge\ Dev
