@@ -42,7 +42,7 @@ def start_eel(develop):
 
     if develop:
         directory = 'src'
-        app = None
+        app = 'chrome-app'
         page = {'port': 3000}
     else:
         directory = 'build'
@@ -57,17 +57,16 @@ def start_eel(develop):
 
     eel_kwargs = dict(
         host='localhost',
-        port=8080,
+        port=8081,
         size=(1280, 800),
     )
+    print("Initializing Eel with dir  %s  ", directory)
+
     try:
         eel.start(page, mode=app, **eel_kwargs)
-    except EnvironmentError:
-        # If Chrome isn't found, fallback to Microsoft Edge on Win10 or greater
-        if sys.platform in ['win32', 'win64'] and int(platform.release()) >= 10:
-            eel.start(page, mode='edge', **eel_kwargs)
-        else:
-            raise
+    except Exception as e:
+        print("Exception Happened : %s", str(e))
+        pass
 
 
 if __name__ == '__main__':
